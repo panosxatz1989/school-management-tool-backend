@@ -21,7 +21,7 @@ public class Subscription {
     private User user;
 
     @ManyToOne(optional = false)
-    private Service service;
+    private Provision provision;
 
     @Column(nullable = false, columnDefinition = "decimal(5,2)")
     private Double monthlyCost;

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "lessons")
@@ -29,5 +28,5 @@ public class Lesson {
     private String curriculum;
 
     @ManyToOne(optional = false)
-    private Service service;
+    private Provision provision;
 }

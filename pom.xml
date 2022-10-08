@@ -11,7 +11,7 @@
 	<groupId>school</groupId>
 	<artifactId>management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>management</name>
+	<name>school-management</name>
 	<description>School Management Tool</description>
 	<properties>
 		<java.version>17</java.version>
@@ -59,6 +59,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.19.2</version>
 		</dependency>
 	</dependencies>
 

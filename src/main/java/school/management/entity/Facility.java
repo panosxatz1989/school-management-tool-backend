@@ -32,12 +32,11 @@ public class Facility {
     private String logo;
 
     @ManyToMany
-    @JoinTable(name = "facility_services", joinColumns = {
-            @JoinColumn(name = "facility_id")
-    }, inverseJoinColumns = {
-            @JoinColumn(name = "service_id")
-    })
-    private List<Service> services;
+    @JoinTable(name = "facility_services",
+            joinColumns = @JoinColumn(name = "facility_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
+    private List<Provision> provisions;
 
     @OneToMany(mappedBy = "facility")
     private List<Classroom> classrooms;

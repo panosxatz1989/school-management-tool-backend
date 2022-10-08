@@ -6,4 +6,6 @@ import school.management.entity.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
+
+    Role findByName(String name);
 }

@@ -8,11 +8,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "service_types")
+@Table(name = "provision_types")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceType {
+public class ProvisionType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class ServiceType {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "serviceType")
-    private List<Service> services;
+    @OneToMany(mappedBy = "provisionType")
+    private List<Provision> provisions;
 
 }

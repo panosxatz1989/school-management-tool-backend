@@ -1,6 +1,10 @@
 package school.management.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +16,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class User {
 
     @Id
@@ -21,35 +29,38 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = false)
+    private String password;
+
     @Column(nullable = false, length = 100)
     private String name;
 
     @Column(nullable = false, length = 100)
     private String lastName;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String fatherName;
 
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(nullable = false)
+    @Column
     private String address;
 
-    @Column(nullable = false)
+    @Column
     private String phone;
 
-    @ManyToMany
-    @JoinTable(name = "user_roles", joinColumns = {
-            @JoinColumn(name = "user_id")
-    }, inverseJoinColumns = {
-            @JoinColumn(name = "role_id")
-    })
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     private List<Role> roles;
 
     @OneToMany(mappedBy = "user")
     private List<Subscription> subscriptions;
 
-    @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
+    @Column(columnDefinition = "TINYINT(1) DEFAULT 1")
     private Boolean active;
 }

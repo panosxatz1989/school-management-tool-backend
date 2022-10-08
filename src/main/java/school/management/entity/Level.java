@@ -21,5 +21,5 @@ public class Level {
     private String name;
 
     @ManyToOne(optional = false)
-    private Service service;
+    private Provision provision;
 }

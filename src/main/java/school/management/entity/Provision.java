@@ -8,11 +8,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "services")
+@Table(name = "provisions")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Service {
+public class Provision {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Service {
     private List<Facility> facilities;
 
     @ManyToOne(optional = false)
-    private ServiceType serviceType;
+    private ProvisionType provisionType;
 
     @OneToMany(mappedBy = "service")
     private List<Subscription> subscriptions;
